@@ -7,6 +7,7 @@ from app.features.product.domain.entities.product_entity import ProductEntity
 
 
 Base = declarative_base()
+metadata = Base.metadata
 
 class Product(Base):
     __tablename__ = 'product'
