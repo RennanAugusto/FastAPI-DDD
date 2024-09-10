@@ -8,7 +8,7 @@ from app.dependencies import get_settings
 
 __SETTINGS: Settings = get_settings()
 
-__SQLALCHEMY_DATABASE_URL = 'postgresql://{db_user}:{db_pass}@{db_host}/{db_name}'.format(
+__SQLALCHEMY_DATABASE_URL = 'postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}'.format(
     **dict(__SETTINGS)
 )
 
@@ -25,6 +25,7 @@ SessionLocal = sessionmaker(
 
 
 def get_session() -> Iterator[Session]:
+    print(__SETTINGS)
     db = SessionLocal()
     try:
         yield db
